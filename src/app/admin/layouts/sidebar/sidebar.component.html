@@ -1,0 +1,47 @@
+
+
+<mat-nav-list  ngSkipHydration >
+    <div class="profile-card">
+        <img src="https://png.pngtree.com/png-vector/20220714/ourmid/pngtree-it-administrators-working-in-server-room-png-image_5702212.png">
+
+        <div class="header">
+            <h4>اسم المستخدم</h4>
+            <h4>{{name}}</h4>
+            <h4>{{auth}}</h4>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/" >
+        <mat-icon >car_rental</mat-icon>
+      <span>مركبات</span>
+    </a>
+
+
+    <a *ngIf="NotA " mat-list-item routerLinkActive="list-item-active" routerLink="/home/view-branch">
+        <mat-icon>description</mat-icon>
+     <span>الفروع</span>
+    </a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/view-employee" >
+        <mat-icon>person</mat-icon>
+     <span>الموظفين</span>
+    </a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/view-busy-vehicles" >
+        <mat-icon>car_rental</mat-icon>
+     <span>المركبات المشغولة</span>
+    </a>
+<!--
+    <a mat-list-item routerLinkActive="list-item-active" >
+      <mat-icon>exit_to_app</mat-icon>
+   <span (click)="logout()"> الخروج</span>
+  </a> -->
+
+
+
+</mat-nav-list>
+

@@ -1,0 +1,105 @@
+<h1 mat-dialog-title fxLayoutAlign="flex-end">تعديل بيانات موظف </h1>
+<mat-divider></mat-divider>
+<form  [formGroup]="employeeForm" >
+<div mat-dialog-content dir="rtl">
+
+    <div class="container">
+        <mat-form-field appearance="fill">
+          <mat-label> الرقم القومي</mat-label>
+          <input matInput placeholder="الرقم القومي"  formControlName="employee_ID"  readonly="true" >
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>  اسم الموظف</mat-label>
+            <input matInput placeholder="اسم الموظف"    formControlName="employee_Name">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label> تاريخ الميلاد</mat-label>
+            <input matInput type="date" placeholder="تاريخ الميلاد"    formControlName="employee_Birthday">
+        </mat-form-field>
+    </div>
+
+    <div class="container">
+        <mat-form-field appearance="fill">
+          <mat-label>المدينة</mat-label>
+          <input matInput placeholder="المدينة"   formControlName="employee_City">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>رقم المبنى</mat-label>
+          <input matInput placeholder="رقم المبنى"    formControlName="employee_BuildingNumber">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>اسم الشارع</mat-label>
+          <input matInput placeholder="اسم الشارع"    formControlName="employee_Street_Name">
+        </mat-form-field>
+    </div>
+
+    <div class="container">
+        <mat-form-field appearance="fill">
+          <mat-label>  الجنسية</mat-label>
+          <input matInput placeholder="الجنسية"   formControlName="employee_Nationality">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>  رقم الفرع</mat-label>
+            <input matInput placeholder="رقم الفرع"    formControlName="branch_ID" type="number">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>  رقم المستخدم</mat-label>
+          <input matInput placeholder=" رقم المستخدم"    formControlName="userId" >
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>   كلمة المرور</mat-label>
+        <input matInput placeholder=" كلمة المرور"    formControlName="password" >
+    </mat-form-field>
+    </div>
+
+    <div class="container">
+      <mat-form-field class="example-chip-list">
+        <mat-label>ارقام التليفون</mat-label>
+        <mat-chip-grid #chipGrid aria-label="ادخل رقم تليفون">
+          <mat-chip-row
+            *ngFor="let phone of employeePhones"
+            (removed)="remove(phone)"
+            [editable]="true"
+            (edited)="edit(phone, $event)"
+            [aria-description]="'press enter to edit ' + phone">
+            {{ phone }}
+            <button matChipRemove [attr.aria-label]="'remove ' + phone">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+          <input placeholder=" ...رقم جديد"
+                 [matChipInputFor]="chipGrid"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="addOnBlur"
+                 (matChipInputTokenEnd)="add($event)"
+                 formControlName="employeePhones" />
+        </mat-chip-grid>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>الوظيفة</mat-label>
+        <mat-select placeholder="اختر الوظيفة"   formControlName="employee_Role">
+          <mat-option *ngFor="let job of filteredJobOptions" [value]="job">
+            {{ job }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+   <button mat-raised-button color="warn" mat-dialog-close>الغاء</button>
+   <button mat-raised-button color="primary"  type="submit"  (click)="updateEmployee()">تعديل</button>
+</div>
+
+</form>

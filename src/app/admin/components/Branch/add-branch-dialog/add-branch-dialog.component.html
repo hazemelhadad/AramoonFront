@@ -1,0 +1,28 @@
+<h1 mat-dialog-title fxLayoutAlign="flex-end">اضافة فرع جديد</h1>
+<mat-divider></mat-divider>
+
+<form  [formGroup]="branchForm" >
+<div mat-dialog-content dir="rtl">
+    
+    <div class="container" >
+        
+         <mat-form-field appearance="fill"  >
+         <mat-label>اسم الفرع</mat-label>
+        <input matInput formControlName="branch_Name" >
+        </mat-form-field>
+
+        <mat-form-field appearance="fill"  >
+            <mat-label>موقع الفرع</mat-label>
+           <input matInput   formControlName="branch_Location">
+           </mat-form-field>
+
+     </div>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>الغاء</button>
+    <button mat-raised-button color="primary"  [disabled]="branchForm.invalid" (click)="saveBranch()" type="submit" >اضافة</button>
+ 
+  </div>
+
+</form>

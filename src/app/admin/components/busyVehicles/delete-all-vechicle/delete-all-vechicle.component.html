@@ -1,0 +1,26 @@
+<h1 mat-dialog-title fxLayoutAlign="flex-end">  تحرير مركبه من السائقين  </h1>
+<mat-divider></mat-divider>
+
+<form  [formGroup]="busyVehicleForm" >
+<div mat-dialog-content dir="rtl">
+
+    <div class="container" >
+
+
+
+
+        <mat-form-field appearance="fill"  >
+            <mat-label> رقم لوحة المركبة</mat-label>
+           <input #t matInput   formControlName="vehiclePlateNumber">
+           </mat-form-field>
+
+     </div>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close >الغاء</button>
+    <button mat-raised-button color="primary"  [disabled]="busyVehicleForm.invalid" (click)="saveBusyVehicle(t.value)" type="submit" >حذف</button>
+
+  </div>
+
+</form>

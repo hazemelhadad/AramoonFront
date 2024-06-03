@@ -1,0 +1,136 @@
+<h1 mat-dialog-title fxLayoutAlign="flex-end">تعديل  مركبة </h1>
+<mat-divider></mat-divider>
+
+<form  [formGroup]="vehicleForm" >
+
+<div mat-dialog-content  dir="rtl">
+    
+    <div class="container">
+        <mat-form-field appearance="fill">
+          <mat-label>رقم اللوحة</mat-label>
+          <input matInput  formControlName="vehicle_PlateNumber"  readonly="true">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>الرقم التسلسلي   </mat-label>
+            <input matInput  formControlName="license_SerialNumber">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label> نوع تسجيل اللوحة</mat-label>
+            <input matInput  formControlName="license_Registeration">
+          </mat-form-field>
+     </div>
+      <div class="container">
+    
+        <mat-form-field appearance="fill">
+          <mat-label>تاريخ انتهاء رخصة السير</mat-label>
+          <input matInput  formControlName="license_ExpirationDate">
+        
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>رقم الهيكل</mat-label>
+          <input matInput  formControlName="vehicle_ChassisNum">
+        
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>سنة الصنع</mat-label>
+          <input matInput  formControlName="vehicle_ManufactureYear" type="number">
+        
+        </mat-form-field>
+     
+
+    </div>
+    <div class="container">
+    
+        <mat-form-field appearance="fill">
+          <mat-label>  الماركة</mat-label>
+          <input matInput  formControlName="vehicle_BrandName" >
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>  لون المركبة</mat-label>
+          <input matInput  formControlName="vehicle_Color" >
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label> الطراز </mat-label>
+          <input matInput  formControlName="vehicle_Type" > 
+        </mat-form-field>
+    
+        
+    
+    </div>
+
+    <div class="container">
+
+      <mat-form-field appearance="fill">
+        <mat-label> حالة التأمين </mat-label>
+        <input matInput  formControlName="vehicle_Insurance" >
+       
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label> رقم الفرع </mat-label>
+        <input matInput  formControlName="branch_ID"  type="number">
+       
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>  سعر المركبة</mat-label>
+        <input matInput  formControlName="vehicle_Price"  type="number">
+       
+      </mat-form-field>
+    </div>
+
+    <div class="container">
+        
+        <mat-form-field appearance="fill">
+            <mat-label>   قراءة العداد </mat-label>
+            <input matInput  formControlName="vehicle_Mileage" type="number">
+           
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>   تاريخ اخر صيانة </mat-label>
+            <input matInput  formControlName="vehicle_LastRepair_Date">
+           
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>   سعر الصيانة </mat-label>
+            <input matInput  formControlName="vehicle_LastRepair_Price" type="number">
+           
+          </mat-form-field>
+    
+    </div>
+
+    <div class="container">
+        
+      <mat-form-field appearance="fill">
+          <mat-label>   تاريخ اخر حادثة </mat-label>
+          <input matInput  formControlName="vehicle_LastAccident_Date">
+         
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>   مالك المركبة </mat-label>
+          <input matInput  formControlName="vehicle_Owner">
+         
+        </mat-form-field>
+
+       
+  
+  </div>
+
+
+</div>
+ <div mat-dialog-actions [align]="'end'">
+   <button mat-raised-button color="warn" mat-dialog-close>الغاء</button>
+   <button mat-raised-button color="primary"  (click)="updateVehicle()" type="submit" >حفظ</button>
+
+ </div>
+
+</form>

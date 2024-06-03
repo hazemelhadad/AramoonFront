@@ -1,0 +1,117 @@
+<div class="background">
+    <div class="space"></div>
+     <div class="container-fluid">
+        <div class="add " fxLayoutAlign="flex-start">
+            <button mat-raised-button color="primary"  (click)="openDialog()" >اضافة موظف جديد</button>
+        </div>
+        <mat-divider></mat-divider>
+         
+        <mat-form-field  fxLayoutAlign="flex-end">
+            <mat-label>بحث</mat-label>
+            <input matInput (keyup)="applyFilter($event)"  #input>
+          </mat-form-field>
+        
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" >
+
+                <!-- Actions -->
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> عمليات</th>
+                    <td mat-cell *matCellDef="let element" > 
+                        <button mat-mini-fab color="light" class="icon" (click)="openConfirmDialog(element.employee_ID)" >
+                            <mat-icon color="warn">delete</mat-icon>
+                         </button>
+
+                         <button mat-mini-fab color="light" class="icon" (click)="editDialog(element)"  >
+                            <mat-icon color="primary" >edit</mat-icon>
+                         </button>
+                       
+                         <button mat-mini-fab color="light" class="icon"  >
+                          <mat-icon color="primary">print</mat-icon>
+                       </button>
+                        
+                    </td>
+                </ng-container>
+
+                 <!-- employee_ID Column -->
+                 <ng-container matColumnDef="employee_ID">
+                    <th mat-header-cell *matHeaderCellDef> الرقم القومي </th>
+                    <td mat-cell *matCellDef="let element"> {{element.employee_ID}} </td>
+                  </ng-container>
+
+                   <!-- employee_Name Column -->
+                   <ng-container matColumnDef="employee_Name">
+                    <th mat-header-cell *matHeaderCellDef>  الاسم </th>
+                    <td mat-cell *matCellDef="let element"> {{element.employee_Name}} </td>
+                  </ng-container>
+
+                    <!-- employee_Birthday Column -->
+                    <ng-container matColumnDef="employee_Birthday">
+                        <th mat-header-cell *matHeaderCellDef> تاريخ الميلاد</th>
+                        <td mat-cell *matCellDef="let element"> {{element.employee_Birthday}} </td>
+                      </ng-container>
+
+                      <!--chassisno Column -->
+                  <ng-container matColumnDef="employee_Role">
+                    <th mat-header-cell *matHeaderCellDef>  الوظيفة </th>
+                    <td mat-cell *matCellDef="let element"> {{element.employee_Role}} </td>
+                  </ng-container>
+
+
+                   <!-- manifuctureyear Column -->
+                   <ng-container matColumnDef="employee_Nationality">
+                    <th mat-header-cell *matHeaderCellDef>  الجنسية </th>
+                    <td mat-cell *matCellDef="let element"> {{element.employee_Nationality}} </td>
+                  </ng-container>
+
+                  
+                   <!-- employee_Street_Name Column -->
+                   <ng-container matColumnDef="employee_Street_Name">
+                    <th mat-header-cell *matHeaderCellDef> اسم الشارع </th>
+                    <td mat-cell *matCellDef="let element"> {{element.employee_Street_Name}} </td>
+                  </ng-container>
+
+                   <!-- employee_BuildingNumber Column -->
+                   <ng-container matColumnDef="employee_BuildingNumber">
+                    <th mat-header-cell *matHeaderCellDef>رقم المبنى </th>
+                    <td mat-cell *matCellDef="let element"> {{element.employee_BuildingNumber}} </td>
+                  </ng-container>
+
+                  
+                        <!-- employee_City Column -->
+                <ng-container matColumnDef="employee_City">
+                    <th mat-header-cell *matHeaderCellDef> المدينة  </th>
+                    <td mat-cell *matCellDef="let element"> {{element.employee_City}} </td>
+                  </ng-container>
+
+
+                   <!-- branch_ID Column -->
+                <ng-container matColumnDef="branch_ID">
+                  <th mat-header-cell *matHeaderCellDef> رقم الفرع  </th>
+                  <td mat-cell *matCellDef="let element"> {{element.branch_ID}} </td>
+                </ng-container>
+
+
+                 <!-- employeePhones Column -->
+                 <ng-container matColumnDef="employeePhones">
+                  <th mat-header-cell *matHeaderCellDef> ارقام التليفون  </th>
+                  <td mat-cell *matCellDef="let element"> {{element.employeePhones}} </td>
+                </ng-container>
+
+               
+                  
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                  
+
+                  
+             </table>
+
+             <div class="space"></div>
+
+              <!-- Add paginator component -->
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+            </div>
+     </div>
+</div>

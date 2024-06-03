@@ -1,0 +1,159 @@
+<div class="background">
+    <div class="space"></div>
+     <div class="container-fluid">
+        <div class="add " fxLayoutAlign="flex-start">
+            <button mat-raised-button color="primary"  (click)="openDialog()" >اضافة  مركبة جديدة </button>
+        </div>
+        <mat-divider></mat-divider>
+         
+        <mat-form-field  fxLayoutAlign="flex-end">
+            <mat-label>بحث</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="مثال:" #input>
+          </mat-form-field>
+        
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" >
+
+                <!-- Actions -->
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> عمليات</th>
+                    <td mat-cell *matCellDef="let element" > 
+                        <button mat-mini-fab color="light" class="icon"  (click)="openConfirmDialog(element.vehicle_PlateNumber)" >
+                            <mat-icon color="warn">delete</mat-icon>
+                         </button>
+
+                         <button mat-mini-fab color="light" class="icon" (click)="editDialog(element)"  >
+                            <mat-icon color="primary" >edit</mat-icon>
+                         </button>
+                         
+                         <button mat-mini-fab color="light" class="icon" (click)=" assignDialog()"  >
+                            <mat-icon color="primary" >add</mat-icon>
+                         </button>
+                         <button mat-mini-fab color="light" class="icon"  >
+                          <mat-icon color="primary">print</mat-icon>
+                       </button>
+                        
+                    </td>
+                </ng-container>
+
+                 <!-- regestrationtype Column -->
+                 <ng-container matColumnDef="vehicle_PlateNumber">
+                    <th mat-header-cell *matHeaderCellDef>  رقم اللوحة </th>
+                    <td mat-cell *matCellDef="let element"> {{element.vehicle_PlateNumber}} </td>
+                  </ng-container>
+
+                   <!-- Edate Column -->
+                   <ng-container matColumnDef="license_SerialNumber">
+                    <th mat-header-cell *matHeaderCellDef>  الرقم التسلسلي </th>
+                    <td mat-cell *matCellDef="let element"> {{element.license_SerialNumber}} </td>
+                  </ng-container>
+
+                    <!-- color Column -->
+                    <ng-container matColumnDef="license_Registeration">
+                        <th mat-header-cell *matHeaderCellDef> نوع تسجيل اللوحة</th>
+                        <td mat-cell *matCellDef="let element"> {{element.license_Registeration}} </td>
+                      </ng-container>
+
+                      <!--chassisno Column -->
+                  <ng-container matColumnDef="license_ExpirationDate">
+                    <th mat-header-cell *matHeaderCellDef>  تاريخ انتهاء رخصة السير </th>
+                    <td mat-cell *matCellDef="let element"> {{element.license_ExpirationDate}} </td>
+                  </ng-container>
+
+
+                   <!-- manifuctureyear Column -->
+                   <ng-container matColumnDef="vehicle_ChassisNum">
+                    <th mat-header-cell *matHeaderCellDef>  رقم الهيكل </th>
+                    <td mat-cell *matCellDef="let element"> {{element.vehicle_ChassisNum}} </td>
+                  </ng-container>
+
+                  
+                   <!-- brand Column -->
+                   <ng-container matColumnDef="vehicle_ManufactureYear">
+                    <th mat-header-cell *matHeaderCellDef> سنة الصنع </th>
+                    <td mat-cell *matCellDef="let element"> {{element.vehicle_ManufactureYear}} </td>
+                  </ng-container>
+
+                   <!-- type Column -->
+                   <ng-container matColumnDef="vehicle_BrandName">
+                    <th mat-header-cell *matHeaderCellDef>الماركة </th>
+                    <td mat-cell *matCellDef="let element"> {{element.vehicle_BrandName}} </td>
+                  </ng-container>
+
+                  
+                        <!-- plateno Column -->
+                <ng-container matColumnDef="vehicle_Color">
+                    <th mat-header-cell *matHeaderCellDef>  اللون </th>
+                    <td mat-cell *matCellDef="let element"> {{element.vehicle_Color}} </td>
+                  </ng-container>
+
+
+                  <!-- plateno Column -->
+                <ng-container matColumnDef="vehicle_Type">
+                  <th mat-header-cell *matHeaderCellDef>  الطراز </th>
+                  <td mat-cell *matCellDef="let element"> {{element.vehicle_Type}} </td>
+                </ng-container>
+
+                <!-- plateno Column -->
+                <ng-container matColumnDef="vehicle_Insurance">
+                  <th mat-header-cell *matHeaderCellDef>  حالة التأمين </th>
+                  <td mat-cell *matCellDef="let element"> {{element.vehicle_Insurance}} </td>
+                </ng-container>
+
+                <!-- plateno Column -->
+                <ng-container matColumnDef="branch_ID">
+                  <th mat-header-cell *matHeaderCellDef>  رقم الفرع </th>
+                  <td mat-cell *matCellDef="let element"> {{element.branch_ID}} </td>
+                </ng-container>
+
+                 <!-- vehicle_Price -->
+                 <ng-container matColumnDef="vehicle_Price">
+                  <th mat-header-cell *matHeaderCellDef>  سعر المركبة  </th>
+                  <td mat-cell *matCellDef="let element"> {{element.vehicle_Price}} </td>
+                </ng-container>
+
+                <!-- vehicle_Mileage -->
+                <ng-container matColumnDef="vehicle_Mileage">
+                  <th mat-header-cell *matHeaderCellDef>  قراءة العداد   </th>
+                  <td mat-cell *matCellDef="let element"> {{element.vehicle_Mileage}} </td>
+                </ng-container>
+
+                 <!-- vehicle_LastRepair_Date -->
+                 <ng-container matColumnDef="vehicle_LastRepair_Date">
+                  <th mat-header-cell *matHeaderCellDef>   تاريخ اخر صيانة   </th>
+                  <td mat-cell *matCellDef="let element"> {{element.vehicle_LastRepair_Date}} </td>
+                </ng-container>
+
+                <!-- vehicle_LastRepair_Price -->
+                <ng-container matColumnDef="vehicle_LastRepair_Price">
+                  <th mat-header-cell *matHeaderCellDef>    قيمة الصيانة    </th>
+                  <td mat-cell *matCellDef="let element"> {{element.vehicle_LastRepair_Price}} </td>
+                </ng-container>
+
+                 <!-- vehicle_LastAccident_Date -->
+                 <ng-container matColumnDef="vehicle_LastAccident_Date">
+                  <th mat-header-cell *matHeaderCellDef>     تاريخ اخر حادث    </th>
+                  <td mat-cell *matCellDef="let element"> {{element.vehicle_LastAccident_Date}} </td>
+                </ng-container>
+
+                 <!-- vehicle_Owner -->
+                 <ng-container matColumnDef="vehicle_Owner">
+                  <th mat-header-cell *matHeaderCellDef>       مالك المركبة    </th>
+                  <td mat-cell *matCellDef="let element"> {{element.vehicle_Owner}} </td>
+                </ng-container>
+
+                
+
+
+ 
+
+                  
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+             </table>
+
+             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
+        </div>
+     </div>
+</div>
