@@ -44,8 +44,8 @@ export class TryService {
   // put
 
   updateEmployee(id: string, data: any): Observable<any> {
-    const url = `https://aramoon.runasp.net/api/SuperAdminController/UpdateEmployees/${id}`;
-    const url2 = `https://aramoon.runasp.net/api/AdminController/UpdateEmployeeData/${id}`;
+    const url = `https://aramooncar.runasp.net/api/SuperAdminController/UpdateEmployees/${id}`;
+    const url2 = `https://aramooncar.runasp.net/api/AdminController/UpdateEmployeeData/${id}`;
     let newHeader = {
       accept: '*/*',
       Authorization: 'Bearer ' + localStorage.getItem('eToken'),
@@ -63,9 +63,9 @@ export class TryService {
 
   getAllEmployees(): Observable<any> {
     const url =
-      'https://aramoon.runasp.net/api/SuperAdminController/GetAllCompanyEmployees';
+      'https://aramooncar.runasp.net/api/SuperAdminController/GetAllCompanyEmployees';
     const url2 =
-      'https://aramoon.runasp.net/api/AdminController/GetAllEmployeesByBranch';
+      'https://aramooncar.runasp.net/api/AdminController/GetAllEmployeesByBranch';
 
     let newHeader = {
       accept: '*/*',
@@ -82,9 +82,9 @@ export class TryService {
 
   addEmployee(data: any): Observable<any> {
     const url =
-      'https://aramoon.runasp.net/api/SuperAdminController/AddEmployee';
+      'https://aramooncar.runasp.net/api/SuperAdminController/AddEmployee';
     const url2 =
-      'https://aramoon.runasp.net/api/AdminController/AddEmployee';
+      'https://aramooncar.runasp.net/api/AdminController/AddEmployee';
     let newHeader = {
       accept: '*/*',
       Authorization: 'Bearer ' + localStorage.getItem('eToken'),
@@ -100,8 +100,8 @@ export class TryService {
   // delete
 
   deleteEmployee(id: string): Observable<any> {
-    const url = `https://aramoon.runasp.net/api/SuperAdminController/DeleteEmployee/${id}`;
-    const url2 = `https://aramoon.runasp.net/api/AdminController/DeleteEmployee/${id}`;
+    const url = `https://aramooncar.runasp.net/api/SuperAdminController/DeleteEmployee/${id}`;
+    const url2 = `https://aramooncar.runasp.net/api/AdminController/DeleteEmployee/${id}`;
     let newHeader = {
       accept: '*/*',
       Authorization: 'Bearer ' + localStorage.getItem('eToken'),
@@ -119,9 +119,9 @@ export class TryService {
 
   getAllVehicles(): Observable<any> {
     const url =
-      'https://aramoon.runasp.net/api/SuperAdminController/GetAllVehicles';
+      'https://aramooncar.runasp.net/api/SuperAdminController/GetAllVehicles';
     const url2 =
-      'https://aramoon.runasp.net/api/AdminController/GetAllVehiclesByBranch';
+      'https://aramooncar.runasp.net/api/AdminController/GetAllVehiclesByBranch';
 
     let newHeader = {
       accept: '*/*',
@@ -137,9 +137,9 @@ export class TryService {
 
   addVehicle(data: any): Observable<any> {
     const url =
-      'https://aramoon.runasp.net/api/SuperAdminController/AddVehicle';
+      'https://aramooncar.runasp.net/api/SuperAdminController/AddVehicle';
     const url2 =
-      'https://aramoon.runasp.net/api/AdminController/AddVehicle';
+      'https://aramooncar.runasp.net/api/AdminController/AddVehicle';
     let newHeader = {
       accept: '*/*',
       Authorization: 'Bearer ' + localStorage.getItem('eToken'),
@@ -154,8 +154,8 @@ export class TryService {
   // update vehicle
 
   updateVehicle(pltNum: string, data: any): Observable<any> {
-    const url = `https://aramoon.runasp.net/api/SuperAdminController/UpdateVehicleData/${pltNum}`;
-    const url2 = `https://aramoon.runasp.net/api/AdminController/UpdateVehicleData/${pltNum}`;
+    const url = `https://aramooncar.runasp.net/api/SuperAdminController/UpdateVehicleData/${pltNum}`;
+    const url2 = `https://aramooncar.runasp.net/api/AdminController/UpdateVehicleData/${pltNum}`;
     let newHeader = {
       accept: '*/*',
       Authorization: 'Bearer ' + localStorage.getItem('eToken'),
@@ -172,8 +172,8 @@ export class TryService {
   // delete vehicle
 
   deleteVehicle(pltNum: string): Observable<any> {
-    const url = `https://aramoon.runasp.net/api/SuperAdminController/DeleteVehicle/${pltNum}`;
-    const url2 = `https://aramoon.runasp.net/api/AdminController/DeleteVehicle/${pltNum}`;
+    const url = `https://aramooncar.runasp.net/api/SuperAdminController/DeleteVehicle/${pltNum}`;
+    const url2 = `https://aramooncar.runasp.net/api/AdminController/DeleteVehicle/${pltNum}`;
     let newHeader = {
       accept: '*/*',
       Authorization: 'Bearer ' + localStorage.getItem('eToken'),
@@ -189,7 +189,7 @@ export class TryService {
 
   getAllBranches(): Observable<any> {
     const url =
-      'https://aramoon.runasp.net/api/SuperAdminController/GetAllBranches';
+      'https://aramooncar.runasp.net/api/SuperAdminController/GetAllBranches';
     let newHeader = {
       accept: '*/*',
       Authorization: 'Bearer ' + localStorage.getItem('eToken'),
@@ -203,7 +203,7 @@ export class TryService {
 
   addBranch(data: any): Observable<any> {
     const url =
-      'https://aramoon.runasp.net/api/SuperAdminController/AddBranch';
+      'https://aramooncar.runasp.net/api/SuperAdminController/AddBranch';
     let newHeader = {
       accept: '*/*',
       Authorization: 'Bearer ' + localStorage.getItem('eToken'),
@@ -217,7 +217,7 @@ export class TryService {
   // update branch ///
 
   updateBranch(BranchID: number, data: any): Observable<any> {
-    const url = `https://aramoon.runasp.net/api/SuperAdminController/EditBranch/${BranchID}`;
+    const url = `https://aramooncar.runasp.net/api/SuperAdminController/EditBranch/${BranchID}`;
     let newHeader = {
       accept: '*/*',
       Authorization: 'Bearer ' + localStorage.getItem('eToken'),
@@ -231,7 +231,7 @@ export class TryService {
   /// delete branch ////
 
   deleteBranch(BranchID: number): Observable<any> {
-    const url = `https://aramoon.runasp.net/api/SuperAdminController/DeleteBranch/${BranchID}`;
+    const url = `https://aramooncar.runasp.net/api/SuperAdminController/DeleteBranch/${BranchID}`;
     let newHeader = {
       accept: '*/*',
       Authorization: 'Bearer ' + localStorage.getItem('eToken'),
@@ -247,9 +247,9 @@ export class TryService {
 
   getAllbusyVehicles(): Observable<any> {
     const url =
-      'https://aramoon.runasp.net/api/SuperAdminController/GetAllVehiclesInUse';
+      'https://aramooncar.runasp.net/api/SuperAdminController/GetAllVehiclesInUse';
     const url2 =
-      'https://aramoon.runasp.net/api/AdminController/GetAllVehiclesInUse';
+      'https://aramooncar.runasp.net/api/AdminController/GetAllVehiclesInUse';
     let newHeader = {
       accept: '*/*',
       Authorization: 'Bearer ' + localStorage.getItem('eToken'),
@@ -265,7 +265,7 @@ export class TryService {
 
   addBusyVehicle(data: any): Observable<any> {
     const url =
-      'https://aramoon.runasp.net/api/AdminController/AssignEmployeeToVehicle';
+      'https://aramooncar.runasp.net/api/AdminController/AssignEmployeeToVehicle';
     let newHeader = {
       accept: '*/*',
       Authorization: 'Bearer ' + localStorage.getItem('eToken'),
@@ -279,7 +279,7 @@ export class TryService {
   ///// delete//////
 
   deleteVehicleInUse(id: string, pltNum: string): Observable<any> {
-    const url = `https://aramoon.runasp.net/api/AdminController/FreeTheVehicleFromSingleEmployee/${id}/${pltNum}`;
+    const url = `https://aramooncar.runasp.net/api/AdminController/FreeTheVehicleFromSingleEmployee/${id}/${pltNum}`;
     let newHeader = {
       accept: '*/*',
       Authorization: 'Bearer ' + localStorage.getItem('eToken'),
@@ -291,7 +291,7 @@ export class TryService {
 
   deleteAllVehicleInUse(pltNum: string): Observable<any> {
     console.log('iam hereeeeeee');
-    const url = `https://aramoon.runasp.net/api/AdminController/FreeTheVehicleFromAllEmployees/${pltNum}`;
+    const url = `https://aramooncar.runasp.net/api/AdminController/FreeTheVehicleFromAllEmployees/${pltNum}`;
     let newHeader = {
       accept: '*/*',
       Authorization: 'Bearer ' + localStorage.getItem('eToken'),
