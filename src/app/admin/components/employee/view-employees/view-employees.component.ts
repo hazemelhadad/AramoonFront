@@ -118,16 +118,48 @@ export class ViewEmployeesComponent implements OnInit, AfterViewInit {
     );
   }
 
-  printEmployee(employee: any): void {
-    this.printData = employee;
-    setTimeout(() => {
-      const printContents = document.getElementById('print-section')!.innerHTML;
-      const originalContents = document.body.innerHTML;
+  // printEmployee(employee: any): void {
+  //   this.printData = employee;
+  //   setTimeout(() => {
+  //     const printContents = document.getElementById('print-section')!.innerHTML;
+  //     const originalContents = document.body.innerHTML;
 
-      document.body.innerHTML = printContents;
-      window.print();
-      document.body.innerHTML = originalContents;
-      window.location.reload();
-    }, 1000);
+  //     document.body.innerHTML = printContents;
+  //     window.print();
+  //     document.body.innerHTML = originalContents;
+  //     window.location.reload();
+  //   }, 1000);
+  // }
+  printEmployee(employee: any): void {
+    this.printData = employee; // Ensure this data is used or displayed in the print section
+
+    const printSection = document.getElementById('print-section');
+    if (printSection) {
+      const printWindow = window.open('', '_blank');
+      if (printWindow) {
+        printWindow.document.write(
+          '<html><head><title>Print Employee</title></head><body>'
+        );
+        printWindow.document.write(printSection.innerHTML); // Safely accessing innerHTML
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.focus();
+
+        setTimeout(() => {
+          printWindow.print();
+          printWindow.close();
+        }, 1000);
+      } else {
+        console.error('Unable to open the print window.');
+        alert(
+          'Pop-up blocking settings are preventing the print window from opening. Please allow pop-ups for this site.'
+        );
+      }
+    } else {
+      console.error('Print section element not found');
+      alert(
+        'Failed to find the print section. Please make sure the page is fully loaded.'
+      );
+    }
   }
 }

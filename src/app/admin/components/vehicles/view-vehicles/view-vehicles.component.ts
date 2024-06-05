@@ -133,19 +133,51 @@ export class ViewVehiclesComponent implements OnInit, AfterViewInit {
     );
   }
 
+  // printVehicle(vehicle: any): void {
+  //   this.printData = vehicle;
+  //   const originalTitle = document.title; // Store the original document title
+  //   document.title = 'تفاصيل المركبة'; // Set the new document title
+  //   setTimeout(() => {
+  //     const printContents = document.getElementById('print-section')!.innerHTML;
+  //     const originalContents = document.body.innerHTML;
+
+  //     document.body.innerHTML = printContents;
+  //     window.print();
+  //     document.body.innerHTML = originalContents;
+  //     document.title = originalTitle; // Restore the original document title
+  //     window.location.reload();
+  //   }, 1000);
+  // }
   printVehicle(vehicle: any): void {
     this.printData = vehicle;
-    const originalTitle = document.title; // Store the original document title
-    document.title = 'تفاصيل المركبة'; // Set the new document title
-    setTimeout(() => {
-      const printContents = document.getElementById('print-section')!.innerHTML;
-      const originalContents = document.body.innerHTML;
 
-      document.body.innerHTML = printContents;
-      window.print();
-      document.body.innerHTML = originalContents;
-      document.title = originalTitle; // Restore the original document title
-      window.location.reload();
-    }, 1000);
+    // Create a new window or an iframe for printing
+    let printWindow = window.open('', '_blank');
+
+    if (printWindow) {
+      printWindow.document.write('<html><head><title>تفاصيل المركبة</title>');
+      printWindow.document.write(
+        '<link rel="stylesheet" href="yourstyles.css">'
+      ); // Include any styles if necessary
+      printWindow.document.write('</head><body>');
+      printWindow.document.write(
+        document.getElementById('print-section')!.innerHTML
+      );
+      printWindow.document.write('</body></html>');
+
+      printWindow.document.close(); // Necessary for some browsers
+      printWindow.focus(); // Necessary for some browsers
+
+      // Use a timeout to ensure the content is fully loaded before printing
+      setTimeout(() => {
+        printWindow.print();
+        printWindow.close(); // Close the print window after printing
+      }, 1000);
+    } else {
+      console.error('Unable to open the print window.');
+      alert(
+        'Pop-up blocking settings are preventing the print window from opening. Please allow pop-ups for this site.'
+      );
+    }
   }
 }
